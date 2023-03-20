@@ -1,13 +1,3 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyB8sPei_G1Ku7qB6FJBiRoXJ5AhN2Ry_rs",
-    authDomain: "instantmessaging-3d78a.firebaseapp.com",
-    databaseURL: "https://instantmessaging-3d78a.firebaseio.com",
-    projectId: "instantmessaging-3d78a",
-    storageBucket: "instantmessaging-3d78a.appspot.com",
-    messagingSenderId: "78704653938",
-    appId: "1:78704653938:web:a8a4f49c5482fe6905f4eb",
-    measurementId: "G-ZT878F49KK"
-};
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
