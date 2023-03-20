@@ -18,10 +18,10 @@ function checkUser(){
     console.log(typeof userName);
 
     if(userName==null || typeof name==null){
-        window.location.href = "index.html";
+        window.location.href = "/The-Feed/index.html";
         alert("Please login again!");
     }else if(userName=="null" || typeof name=="null"){
-        window.location.href = "index.html";
+        window.location.href = "/The-Feed/index.html";
         alert("Please login again!");
     }
 }
@@ -72,7 +72,7 @@ function loginUser(){
             localStorage.setItem("nName",firebaseName);
             //sessionStorage.setItem("nUserName",userName);
             //sessionStorage.setItem("nName",firebaseName);
-            window.location.href = "home.html";
+            window.location.href = "/The-Feed/home.html";
         } else{
             alert("Login failed!");
         }
@@ -103,7 +103,7 @@ function addUser(){
         //sessionStorage.setItem("nUserName",userName);
         //sessionStorage.setItem("nName",name); 
                   
-        window.location.href = "home.html";
+        window.location.href = "/The-Feed/home.html";
     }
     
 }	
@@ -115,7 +115,7 @@ function logMeOut(){
     localStorage.setItem("nUserName",null);
     localStorage.setItem("nName",null);
 
-    window.location.href = "index.html";
+    window.location.href = "/The-Feed/index.html";
 }
 
 function deleteMessage(self){
@@ -199,7 +199,7 @@ function alreadyLoggedIn(){
     if(userName==null || userName=="null")
         return false;
     else{
-        window.location.href = "home.html";
+        window.location.href = "/The-Feed/home.html";
     }
 
     return false;
