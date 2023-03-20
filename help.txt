@@ -1,0 +1,10 @@
+All the html codes work in text box
+Some codes to help you out!
+
+
+
+<br> - Line breaker
+<b> BOLD CHARACTERS </b>
+<i> ITALIC CHARACTERS </i>
+<a href="example.com" target="_blank"> Click Me </a>
+&emsp; - Four spaces or Tab

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+        <title> Home </title>
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body id="main-body" onload="return checkUser();">
+        
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+    <!-- Include Firebase Database -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+    <script src="js/home.js"></script>
+
+    <script>
+        var audio = new Audio('juntos.mp3');
+        var lastTime = Date.now();
+        var nowTime = 0;
+        var diff = 0;
+        var isMuted = false;
+
+        firebase.database().ref("tweets").on("child_added",function(snapshot){
+            //var uu = sessionStorage.getItem("nUserName");
+            //var nn = sessionStorage.getItem("nName");
+            var uu = localStorage.getItem("nUserName");
+            var nn = localStorage.getItem("nName");
+
+            var html = "";
+            html += `<div id='message-${snapshot.key}'>`;
+            html += `<div class="tweet-container">`;
+            html += `<h4><u>`;
+            html += snapshot.val().name;
+            html += `</u> at `;
+            html += snapshot.val().time;            
+            html += `</h4>`;
+            html += `<p class="message">`;
+            html += snapshot.val().tweet;
+            html += `</p>`;
+            //Show delete button lul
+            
+            if( snapshot.val().uname == uu ){
+                html += "<button class='delete-button' data-id='" + snapshot.key + "'onclick='deleteMessage(this);'>";
+                html += "Delete"
+                html += "</button>"
+                //console.log(snapshot.key);
+            }
+            html += `</div></div>`;
+
+            document.getElementById("ol-style").innerHTML += html;
+            nowTime = Date.now();
+            diff = nowTime - lastTime;
+            isMuted = muteMe();
+
+            if(diff > 8000 && isMuted != true){
+
+                if(nn != snapshot.val().name )
+                    audio.play();
+            }
+
+        });
+
+        firebase.database().ref("tweets").on("child_removed",function(snapshot){
+
+            document.getElementById(`message-${snapshot.key}`).innerHTML = "";
+        });
+    </script>
+    
+    <!-- HTML TAGS -->
+    <header id="main-header">
+        <div class="container">
+            <nav id="navbar">
+                <ul>
+                    
+                    <li id="logo">Home</li>
+                    <li><a href="index.html" onclick="return logMeOut();">Logout </a></li>
+                    <li><a href="help.txt" target="_blank">Help</a></li>
+                    <li> 
+                        <input type="checkbox" id="mute" name="mute" value="mute" onclick="muteMe();">
+                        <label for="mute">Mute &emsp; </label>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="tweet-form" >
+        <form onsubmit="return tweetIt();" >
+            <input id="tweet" type="text" placeholder="Write your tweet and press Enter!" autocomplete="off"> 
+            <button type="button" class="buttonTweetIt" onclick="return tweetIt();">Tweet</button>    
+            <button type="button" class="buttonTweetIt" id="myBtn" onclick="return popup();"> Pic </button>
+        </form>
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span><br>
+            <p> You can use website like <a id="dirtyfix" href="https://postimages.org/" target="_blank"><i>postimages.org</i></a> to upload image and get direct link. <br>
+            I strongly recommend to use less size photos, because it's not going to cost us. But it will cost you the bandwidth.</p>
+            <input id="tweet-text" type="text" placeholder="Enter your tweet!" autocomplete="off"> <br><br>
+            <input id="tweet-img" type="text" placeholder="Enter direct link of image!" autocomplete="off"><br><br>
+            <button type="button" onclick="return imagePost();return false;"> Post </button><br><br>
+            <div id="img-message" style="color:green;"> </div>
+        </div>
+     
+    </div>
+
+    <!-- TWEET SORT BY DESCENDING WITH CSS-->
+    <ol id="ol-style"></ol>
+
+
+    </body>
+</html>

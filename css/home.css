@@ -1,0 +1,246 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background: #34495e;
+    font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+    line-height:1.3em;
+    margin:0;
+    transition:0.25s;
+}
+
+.container{
+    width:100%;
+    margin:auto;
+    overflow:hidden;
+    
+}
+
+#main-header{
+    background-color:#191919;
+    color:#3498db;
+    width:100%;
+}
+
+#navbar ul{
+    padding:12px;
+    list-style:none;
+    padding-right:10%;
+}
+
+#navbar li{    
+    float:right;
+}
+
+#navbar a{
+    color:#3498db;
+    text-decoration:none;
+    font-size:18px;
+    padding-right:20px;
+	font-style:normal;
+}
+
+#navbar #logo{
+    padding-left:10%;
+    float:left;
+}
+
+.tweet-form{
+    background-color:#34495e;
+    opacity:100%;
+    margin:auto;
+    width:70%;
+    padding:20px;
+
+    margin-top:1%;
+    
+    background: #191919;
+    text-align:center;
+}
+
+.tweet-form input[id="tweet"]{
+    border:0;
+    background:none;
+    display:block;
+    margin:0px auto;
+    text-align:center;
+    border:2px solid #3498db;
+    padding: 14px 10px;
+    width: 60%;
+    outline:none;
+    color: white;
+    border-radius:24px;
+    transition : 0.25s;
+}
+
+.tweet-form input[id="tweet"]:focus{
+    width:90%;
+    border-color:#2ecc71;
+}
+
+#tweets{
+    list-style:none;
+}
+
+.tweet-container{
+    background-color:#34495e;
+    opacity:100%;
+    margin:auto;
+    width:70%;
+    padding:20px;
+    margin-top:1%;
+    background: #191919;
+    padding-top:1px;
+    padding-bottom:30px;
+}
+
+.tweet-container h4{
+    
+    color:#3498db;
+    opacity:100%;
+    text-align:left;
+    font-size:18px;
+
+
+}
+
+.tweet-container .message{
+    color:white;
+    font-size:14px;
+    margin:0;
+}
+
+.tweet-container .time-date{
+    color:#3498db;
+    font-size:14px;
+    text-align:right;
+    margin:0;
+    
+}
+
+#ol-style{
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column-reverse;
+}
+
+#ol-style .tweet-container li{
+    background-color:#34495e;
+    opacity:100%;
+    margin:auto;
+    width:70%;   
+    background: #191919;
+    float:left;
+}
+#ol-style .tweet-container h4{
+    color:#3498db;
+    opacity:100%;
+    text-align:left;
+    font-size:18px;
+}
+
+#ol-style .tweet-container .message{
+    color:white;
+    font-size:14px;
+    margin:0;
+    opacity:100%;
+}
+
+.tweet-form .buttonTweetIt{
+    border:0;
+    background:none;
+    display:block;
+    margin:10px auto;
+    text-align:center;
+    border:1px solid #2ecc71;
+    padding: 6px 30px;
+    outline:none;
+    color: white;
+    border-radius:24px;
+    transition : 0.25s;
+    cursor:pointer;
+    display:inline-block;
+}
+
+.tweet-form .buttonTweetIt:hover{
+    background: #2ecc71
+}
+
+a{
+    color:white;
+    text-decoration:none;
+	font-style:italic;
+}
+
+a:hover{
+	color:lightblue;
+}
+
+.delete-button{
+    border:none;
+    float:right;
+    color:#3498db;
+    background:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.delete-button:hover{
+    color:red;
+    
+}
+
+.tweet-container img{
+    text-align:center;
+
+    display: inline-block;
+    display: block;
+    padding:10px 1px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  .modal input[type="text"]{
+    width:100%;
+  }
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #dirtyfix{
+      color:blue;
+  }

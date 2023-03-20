@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+        <title> Signup </title>
+        <link rel="stylesheet" href="css/login.css">
+    </head>
+    <body>
+        
+
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+            <!-- Include Firebase Database -->
+            <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+            <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+
+            <script src="js/home.js"></script>
+            <script>
+                //For some reason this one line fixes the signup-redirection!
+                firebase.database().ref("tweets").on("child_added",function(snapshot){ });
+            </script>
+
+        <!-- SIGNUP FORM -->
+        <div class="form">
+            <form onsubmit="return false;">
+                <h1>Signup</h1>
+                <input id="name" type="text" name="fullName" placeholder="Full Name" autocomplete="off">
+                <input id="userName" type="text" name="username" placeholder="Username" autocomplete="off">
+                <input id="email" type="text" name="email" placeholder="Email" autocomplete="off">
+                <input id="password" type="Password" name="password" placeholder="Password" autocomplete="off">
+                <button type="button" class="signupbutton" onclick="addUser();return false;" >Signup</button>
+                <p class="message">Already registered? <a href="index.html">Login</a></p>                
+            </form>
+        </div>
+
+
+    </body>
+</html>

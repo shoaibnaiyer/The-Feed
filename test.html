@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <title> TEST </title>
+    
+    </head>
+    <body>
+        
+
+        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+        <!-- Include Firebase Database -->
+        <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB8sPei_G1Ku7qB6FJBiRoXJ5AhN2Ry_rs",
+            authDomain: "instantmessaging-3d78a.firebaseapp.com",
+            databaseURL: "https://instantmessaging-3d78a.firebaseio.com",
+            projectId: "instantmessaging-3d78a",
+            storageBucket: "instantmessaging-3d78a.appspot.com",
+            messagingSenderId: "78704653938",
+            appId: "1:78704653938:web:a8a4f49c5482fe6905f4eb",
+            measurementId: "G-ZT878F49KK"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        var myName = prompt("Enter your name");
+        prompt(`Name : ${myName}`);
+        function sendMessage(){
+            //Get message
+            var messageStore = document.getElementById("messageGet").value;
+
+            //Save in database
+            firebase.database().ref("messages").push().set({
+                "sender": myName,
+                "message": messageStore
+            });
+            //Prevent form from submitting
+            return false;          
+        }
+
+        //Listen for incoming messages
+        firebase.database().ref("messages").on("child_added",function(snapshot){
+            var html = "";
+            html += "<li>";
+                html += snapshot.val().sender + ": " + snapshot.val().message;
+            html += "</li";
+
+            document.getElementById("messages").innerHTML += html;
+        });
+        </script>
+
+        <!-- Creaate form to send message -->
+        <form onsubmit="return sendMessage();">
+            <input id="messageGet" placeholder="Enter message" autocomplete="off">
+            <input type="submit">
+        </form>
+        
+        <!-- create a list -->
+        <ul id="messages"></ul>
+
+    </body>
+</html>
